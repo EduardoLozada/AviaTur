@@ -29,7 +29,7 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
       this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.dtgVuelos = new System.Windows.Forms.DataGridView();
       this.panel1 = new System.Windows.Forms.Panel();
@@ -49,6 +49,7 @@
       this.cmbCiudadD = new System.Windows.Forms.ComboBox();
       this.cmbCiudadO = new System.Windows.Forms.ComboBox();
       this.btnReprogramar = new System.Windows.Forms.Button();
+      this.textBox1 = new System.Windows.Forms.TextBox();
       ((System.ComponentModel.ISupportInitialize)(this.dtgVuelos)).BeginInit();
       this.panel1.SuspendLayout();
       this.SuspendLayout();
@@ -64,14 +65,14 @@
       this.dtgVuelos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
       this.dtgVuelos.BorderStyle = System.Windows.Forms.BorderStyle.None;
       this.dtgVuelos.ColumnHeadersHeight = 29;
-      dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
-      dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-      dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-      this.dtgVuelos.DefaultCellStyle = dataGridViewCellStyle4;
+      dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+      dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+      this.dtgVuelos.DefaultCellStyle = dataGridViewCellStyle10;
       this.dtgVuelos.Location = new System.Drawing.Point(12, 56);
       this.dtgVuelos.Name = "dtgVuelos";
       this.dtgVuelos.RowHeadersWidth = 51;
@@ -274,6 +275,18 @@
       this.btnReprogramar.UseVisualStyleBackColor = true;
       this.btnReprogramar.Click += new System.EventHandler(this.btnReprogramar_Click);
       // 
+      // textBox1
+      // 
+      this.textBox1.ForeColor = System.Drawing.Color.DimGray;
+      this.textBox1.Location = new System.Drawing.Point(12, 21);
+      this.textBox1.Name = "textBox1";
+      this.textBox1.Size = new System.Drawing.Size(185, 22);
+      this.textBox1.TabIndex = 15;
+      this.textBox1.Text = "Buscar y/o Filtrar";
+      this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+      this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
+      this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
+      // 
       // Administracion
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -281,6 +294,7 @@
       this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
       this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
       this.ClientSize = new System.Drawing.Size(1212, 517);
+      this.Controls.Add(this.textBox1);
       this.Controls.Add(this.btnReprogramar);
       this.Controls.Add(this.panel1);
       this.Controls.Add(this.dtgVuelos);
@@ -295,6 +309,7 @@
       this.panel1.ResumeLayout(false);
       this.panel1.PerformLayout();
       this.ResumeLayout(false);
+      this.PerformLayout();
 
     }
 
@@ -319,5 +334,6 @@
     private System.Windows.Forms.Label lblError;
     private System.Windows.Forms.Label label5;
     private System.Windows.Forms.Button btnReprogramar;
+    private System.Windows.Forms.TextBox textBox1;
   }
 }

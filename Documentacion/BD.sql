@@ -138,16 +138,30 @@ GO
 IF  NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[SPTraerVuelos]') AND type in (N'P', N'PC'))
 	EXEC ('CREATE PROCEDURE [dbo].[SPTraerVuelos] AS BEGIN SET NOCOUNT ON; END')
 GO
-ALTER PROCEDURE SPTraerVuelos
+
+ALTER PROCEDURE SPTraerVuelos @piTextoBuscar varchar(50)
 AS
 BEGIN
-	
-	select vue.IDVuelo 'Id Vuelo'  ,   ciu.CIUDescripcion 'Ciudad Origen', aer.IATA 'Origen',ciu2.CIUDescripcion 'Ciudad Destino' ,aer2.IATA 'Destino', fecha 'Fecha', HoraSalida 'Hora Salida', HoraLlegada 'Hora Llegada', eso.ESODescripcion 'Estado'   from vuelos vue 
-	inner join Aeropuertos aer on aer.IATA=IATAOrigen
-	inner join Ciudades ciu on aer.CIUCodigo=ciu.CIUCodigo
-	inner join Aeropuertos aer2 on aer2.IATA=IATADestino
-	inner join Ciudades ciu2 on aer2.CIUCodigo=ciu2.CIUCodigo
-	inner join Estados eso on eso.ESOCodigo = vue.ESOCodigo 
+	if (@piTextoBuscar != '')
+		begin
+			select vue.IDVuelo 'Id Vuelo'  ,   ciu.CIUDescripcion 'Ciudad Origen', aer.IATA 'Origen',ciu2.CIUDescripcion 'Ciudad Destino' ,aer2.IATA 'Destino', fecha 'Fecha', HoraSalida 'Hora Salida', HoraLlegada 'Hora Llegada', eso.ESODescripcion 'Estado'   from vuelos vue 
+			inner join Aeropuertos aer on aer.IATA=IATAOrigen
+			inner join Ciudades ciu on aer.CIUCodigo=ciu.CIUCodigo
+			inner join Aeropuertos aer2 on aer2.IATA=IATADestino
+			inner join Ciudades ciu2 on aer2.CIUCodigo=ciu2.CIUCodigo
+			inner join Estados eso on eso.ESOCodigo = vue.ESOCodigo
+			where IDVuelo like'%' +@piTextoBuscar + '%' or ciu.CIUDescripcion like'%' +@piTextoBuscar + '%' or  fecha like'%' +@piTextoBuscar + '%'
+			or ciu2.CIUDescripcion like'%' +@piTextoBuscar + '%' or  eso.ESODescripcion like'%' +@piTextoBuscar + '%'
+		end 
+    else
+		begin
+		select vue.IDVuelo 'Id Vuelo'  ,   ciu.CIUDescripcion 'Ciudad Origen', aer.IATA 'Origen',ciu2.CIUDescripcion 'Ciudad Destino' ,aer2.IATA 'Destino', fecha 'Fecha', HoraSalida 'Hora Salida', HoraLlegada 'Hora Llegada', eso.ESODescripcion 'Estado'   from vuelos vue 
+		inner join Aeropuertos aer on aer.IATA=IATAOrigen
+		inner join Ciudades ciu on aer.CIUCodigo=ciu.CIUCodigo
+		inner join Aeropuertos aer2 on aer2.IATA=IATADestino
+		inner join Ciudades ciu2 on aer2.CIUCodigo=ciu2.CIUCodigo
+		inner join Estados eso on eso.ESOCodigo = vue.ESOCodigo
+	end	
 END
 GO
 

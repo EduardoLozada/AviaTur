@@ -9,7 +9,7 @@ namespace Datos
 {
   public class VuelosDAO : Conexion
   {
-    public DataTable MostrarVuelos()
+    public DataTable MostrarVuelos(string pi_sTextoBuscar = "")
     {
       try
       {
@@ -20,7 +20,7 @@ namespace Datos
           using (var cmd = new SqlCommand("SPTraerVuelos", conection))
           {
             cmd.CommandType = CommandType.StoredProcedure;
-
+            cmd.Parameters.AddWithValue("@piTextoBuscar", pi_sTextoBuscar);
             using (SqlDataReader rdr = cmd.ExecuteReader())
             {
               if (rdr.HasRows)

@@ -10,10 +10,10 @@ namespace Negocio
   {
     VuelosDAO vuelosDAO = new Datos.VuelosDAO();
 
-    public DataTable MostrarVuelos()
+    public DataTable MostrarVuelos(string pi_sTextoBuscar="")
     {
       DataTable vl_oTablaVuelos = new DataTable();
-      vl_oTablaVuelos = vuelosDAO.MostrarVuelos();
+      vl_oTablaVuelos = vuelosDAO.MostrarVuelos(pi_sTextoBuscar);
       return vl_oTablaVuelos;
     }
 

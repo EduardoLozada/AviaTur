@@ -26,9 +26,9 @@ namespace AviatTur
     }
 
 
-    private void mostrarVuelos()
+    private void mostrarVuelos(string pi_sTextoBuscar = "")
     {
-      dtgVuelos.DataSource = vuelosModel.MostrarVuelos();
+      dtgVuelos.DataSource = vuelosModel.MostrarVuelos(pi_sTextoBuscar);
     }
     private void cargarDatos()
     {
@@ -140,6 +140,30 @@ namespace AviatTur
 
       }
 
+    }
+
+    private void textBox1_TextChanged(object sender, EventArgs e)
+    {
+      if (textBox1.Text != "Buscar y/o Filtrar")
+        mostrarVuelos(textBox1.Text);
+    }
+
+    private void textBox1_Leave(object sender, EventArgs e)
+    {
+      if (textBox1.Text == "")
+      {
+        textBox1.Text = "Buscar y/o Filtrar";
+        textBox1.ForeColor = Color.DimGray;
+      }
+    }
+
+    private void textBox1_Enter(object sender, EventArgs e)
+    {
+      if (textBox1.Text == "Buscar y/o Filtrar")
+      {
+        textBox1.Text = "";
+        textBox1.ForeColor = Color.Black;        
+      }
     }
   }
 }
