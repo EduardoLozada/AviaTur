@@ -29,7 +29,7 @@
     private void InitializeComponent()
     {
       this.components = new System.ComponentModel.Container();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
       this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
       this.dtgVuelos = new System.Windows.Forms.DataGridView();
       this.panel1 = new System.Windows.Forms.Panel();
@@ -64,14 +64,14 @@
       this.dtgVuelos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
       this.dtgVuelos.BorderStyle = System.Windows.Forms.BorderStyle.None;
       this.dtgVuelos.ColumnHeadersHeight = 29;
-      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
-      dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-      this.dtgVuelos.DefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
+      dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+      dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+      this.dtgVuelos.DefaultCellStyle = dataGridViewCellStyle4;
       this.dtgVuelos.Location = new System.Drawing.Point(12, 56);
       this.dtgVuelos.Name = "dtgVuelos";
       this.dtgVuelos.RowHeadersWidth = 51;
@@ -122,8 +122,8 @@
       this.lblError.AutoSize = true;
       this.lblError.BackColor = System.Drawing.Color.Transparent;
       this.lblError.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lblError.ForeColor = System.Drawing.Color.LightGray;
-      this.lblError.Location = new System.Drawing.Point(75, 407);
+      this.lblError.ForeColor = System.Drawing.Color.White;
+      this.lblError.Location = new System.Drawing.Point(16, 355);
       this.lblError.Name = "lblError";
       this.lblError.Size = new System.Drawing.Size(139, 23);
       this.lblError.TabIndex = 13;
@@ -134,7 +134,7 @@
       // 
       this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnGuardar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-      this.btnGuardar.Location = new System.Drawing.Point(177, 337);
+      this.btnGuardar.Location = new System.Drawing.Point(177, 335);
       this.btnGuardar.Name = "btnGuardar";
       this.btnGuardar.Size = new System.Drawing.Size(195, 43);
       this.btnGuardar.TabIndex = 12;
@@ -274,7 +274,7 @@
       this.btnReprogramar.UseVisualStyleBackColor = true;
       this.btnReprogramar.Click += new System.EventHandler(this.btnReprogramar_Click);
       // 
-      // frmAnalytics
+      // Administracion
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -286,7 +286,7 @@
       this.Controls.Add(this.dtgVuelos);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
       this.Margin = new System.Windows.Forms.Padding(4);
-      this.Name = "frmAnalytics";
+      this.Name = "Administracion";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "frmAnalytics";
       this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

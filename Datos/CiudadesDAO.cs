@@ -9,25 +9,33 @@ namespace Datos
   public class CiudadesDAO : Conexion
   {
     public List<Tuple<string, string>> TraerCiudades()
-    {                  
+    {
       var vl_oRetorno = new List<Tuple<string, string>>();
-      using (var conection = GetConnection())
+      try
       {
-        conection.Open();
-        using (var cmd = new SqlCommand("SPTraerCiudades", conection))
+        using (var conection = GetConnection())
         {
-          cmd.CommandType = CommandType.StoredProcedure;
-
-          using (SqlDataReader rdr = cmd.ExecuteReader())
+          conection.Open();
+          using (var cmd = new SqlCommand("SPTraerCiudades", conection))
           {
-            while (rdr.Read())
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            using (SqlDataReader rdr = cmd.ExecuteReader())
             {
-              vl_oRetorno.Add(Tuple.Create(rdr.GetString(0), rdr.GetString(1)));             
-            }            
+              while (rdr.Read())
+              {
+                vl_oRetorno.Add(Tuple.Create(rdr.GetString(0), rdr.GetString(1)));
+              }
+            }
           }
         }
+        return vl_oRetorno;
       }
-      return vl_oRetorno;
+      catch (Exception ex)
+      {
+
+        throw ex;
+      }
     }
   }
 }

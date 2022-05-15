@@ -74,15 +74,15 @@ namespace AviatTur
 
         if (cmbCiudadO.SelectedValue != null & cmbCiudadD.SelectedValue != null & cmbEstado.SelectedValue != null)
         { 
-          if (!cmbCiudadD.SelectedValue.ToString().Equals(cmbCiudadD.SelectedValue.ToString())) {
+          if (!cmbCiudadO.SelectedValue.ToString().Equals(cmbCiudadD.SelectedValue.ToString())) {
             if (dtpFecha.Value.Date < DateTime.Now.Date)
             {
-              lblError.Text = "Error la Fecha para la que desea Programar el vuelo ya paso ";
+              lblError.Text = "Error la Fecha para la que desea Programar el vuelo \n ya paso ";
               lblError.Visible = true;
             }
-            else if ((dtpFecha.Value.Date == DateTime.Now.Date && dtpHoras.Value.Hour < DateTime.Now.Hour) || (dtpFecha.Value.Date == DateTime.Now.Date && dtpHoraL.Value.Hour < DateTime.Now.Hour))
+            else if (cmbEstado.SelectedText !="Cancelado"  && (dtpFecha.Value.Date == DateTime.Now.Date && dtpHoras.Value.Hour < DateTime.Now.Hour) || (dtpFecha.Value.Date == DateTime.Now.Date && dtpHoraL.Value.Hour < DateTime.Now.Hour))
             {
-              lblError.Text = "Error la Hora para la que desea Programar el vuelo  ya paso ";
+              lblError.Text = "Error la Hora para la que desea Programar el vuelo ya paso ";
               lblError.Visible = true;
             }
             else
@@ -102,7 +102,7 @@ namespace AviatTur
             }
           }
           else
-            MessageBox.Show("La ciudad de origen no puede ser igual a la de destino");
+            MessageBox.Show("La ciudad de origen y destino no pueden ser iguales");
         }
 
       }

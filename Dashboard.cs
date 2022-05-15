@@ -29,7 +29,7 @@ namespace AviatTur
 
     public Dashboard()
     {
-      InitializeComponent();     
+      InitializeComponent();
     }
 
     private void Form1_Load(object sender, EventArgs e)
@@ -50,37 +50,50 @@ namespace AviatTur
       catch (Exception ex)
       {
         MessageBox.Show("Error al cargar la forma" + ex);
-      }            
+      }
     }
 
     private void btnDashbord_Click(object sender, EventArgs e)
     {
-      pnlNav.Height = btnDashbord.Height;
-      pnlNav.Top = btnDashbord.Top;
-      pnlNav.Left = btnDashbord.Left;
-      btnDashbord.BackColor = Color.FromArgb(46, 51, 73);
+      try
+      {
+        pnlNav.Height = btnDashbord.Height;
+        pnlNav.Top = btnDashbord.Top;
+        pnlNav.Left = btnDashbord.Left;
+        btnDashbord.BackColor = Color.FromArgb(46, 51, 73);
 
-      lbltitle.Text = "Programar Vuelos";
-      this.pnlFormLoader.Controls.Clear();
-      Administracion frmAviatTur_vrb = new Administracion() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-      frmAviatTur_vrb.FormBorderStyle = FormBorderStyle.None;
-      this.pnlFormLoader.Controls.Add(frmAviatTur_vrb);
-      frmAviatTur_vrb.Show();
-
+        lbltitle.Text = "Programar Vuelos";
+        this.pnlFormLoader.Controls.Clear();
+        Administracion frmAviatTur_vrb = new Administracion() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+        frmAviatTur_vrb.FormBorderStyle = FormBorderStyle.None;
+        this.pnlFormLoader.Controls.Add(frmAviatTur_vrb);
+        frmAviatTur_vrb.Show();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("Error al cargar la forma" + ex);
+      }
     }
 
     private void btnAnalytics_Click(object sender, EventArgs e)
     {
-      pnlNav.Height = btnAnalytics.Height;
-      pnlNav.Top = btnAnalytics.Top;
-      btnAnalytics.BackColor = Color.FromArgb(46, 51, 73);
+      try
+      {
+        pnlNav.Height = btnAnalytics.Height;
+        pnlNav.Top = btnAnalytics.Top;
+        btnAnalytics.BackColor = Color.FromArgb(46, 51, 73);
 
-      lbltitle.Text = "Estado De Vuelos";
-      this.pnlFormLoader.Controls.Clear();
-      Reporte frmAnalytics_vrb = new Reporte(this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-      frmAnalytics_vrb.FormBorderStyle = FormBorderStyle.None;
-      this.pnlFormLoader.Controls.Add(frmAnalytics_vrb);
-      frmAnalytics_vrb.Show();
+        lbltitle.Text = "Estado De Vuelos";
+        this.pnlFormLoader.Controls.Clear();
+        Reporte frmAnalytics_vrb = new Reporte(this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+        frmAnalytics_vrb.FormBorderStyle = FormBorderStyle.None;
+        this.pnlFormLoader.Controls.Add(frmAnalytics_vrb);
+        frmAnalytics_vrb.Show();
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("Error al cargar la forma" + ex);
+      }
     }
 
 
@@ -142,7 +155,7 @@ namespace AviatTur
 
           lbltitle.Text = "Programar Vuelos";
           this.pnlFormLoader.Controls.Clear();
-          Administracion frmAviatTur_vrb = new Administracion() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+          Reporte frmAviatTur_vrb = new Reporte(this) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
           frmAviatTur_vrb.FormBorderStyle = FormBorderStyle.None;
           this.pnlFormLoader.Controls.Add(frmAviatTur_vrb);
           frmAviatTur_vrb.Show();

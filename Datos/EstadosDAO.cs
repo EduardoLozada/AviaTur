@@ -9,25 +9,34 @@ namespace Datos
   public class EstadosDAO : Conexion
   {
     public List<Tuple<int, string>> TraerEstados()
-    {                  
-      var vl_oRetorno = new List<Tuple<int, string>>();
-      using (var conection = GetConnection())
+    {
+      try
       {
-        conection.Open();
-        using (var cmd = new SqlCommand("SPTraerEstados", conection))
+        var vl_oRetorno = new List<Tuple<int, string>>();
+        using (var conection = GetConnection())
         {
-          cmd.CommandType = CommandType.StoredProcedure;
-
-          using (SqlDataReader rdr = cmd.ExecuteReader())
+          conection.Open();
+          using (var cmd = new SqlCommand("SPTraerEstados", conection))
           {
-            while (rdr.Read())
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            using (SqlDataReader rdr = cmd.ExecuteReader())
             {
-              vl_oRetorno.Add(Tuple.Create(rdr.GetInt32(0), rdr.GetString(1)));             
-            }            
+              while (rdr.Read())
+              {
+                vl_oRetorno.Add(Tuple.Create(rdr.GetInt32(0), rdr.GetString(1)));
+              }
+            }
           }
         }
+        return vl_oRetorno;
       }
-      return vl_oRetorno;
+      catch (Exception ex)
+      {
+        System.Diagnostics.Trace.WriteLine("EstadosDAO.TraerEstados  ERROR:" + ex.Message);
+        throw ex;
+      }
+
     }
   }
 }

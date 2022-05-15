@@ -11,27 +11,35 @@ namespace Datos
   {
     public DataTable MostrarVuelos()
     {
-      DataTable vl_oTablaVuelos = new DataTable();
-      using (var conection = GetConnection())
+      try
       {
-        conection.Open();
-        using (var cmd = new SqlCommand("SPTraerVuelos", conection))
+        DataTable vl_oTablaVuelos = new DataTable();
+        using (var conection = GetConnection())
         {
-          cmd.CommandType = CommandType.StoredProcedure;
-
-          using (SqlDataReader rdr = cmd.ExecuteReader())
+          conection.Open();
+          using (var cmd = new SqlCommand("SPTraerVuelos", conection))
           {
-            if (rdr.HasRows)
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            using (SqlDataReader rdr = cmd.ExecuteReader())
             {
-              vl_oTablaVuelos.Load(rdr);
+              if (rdr.HasRows)
+              {
+                vl_oTablaVuelos.Load(rdr);
+              }
             }
           }
         }
+        return vl_oTablaVuelos;
       }
-      return vl_oTablaVuelos;
+      catch (Exception ex)
+      {
+        System.Diagnostics.Trace.WriteLine("VuelosDAO.MostrarVuelos ERROR:" + ex.Message);
+        throw ex;
+      }
     }
 
-    public ArrayList TraerDetalle(double pi_dIdVuelo )
+    public ArrayList TraerDetalle(double pi_dIdVuelo)
     {
       try
       {
@@ -57,7 +65,7 @@ namespace Datos
                 vl_oRetorno.Add(rdr["Fecha"]);
                 vl_oRetorno.Add(rdr["Hora Salida"]);
                 vl_oRetorno.Add(rdr["Hora Llegada"]);
-                vl_oRetorno.Add(rdr["Estado"]);                
+                vl_oRetorno.Add(rdr["Estado"]);
               }
             }
           }
@@ -66,43 +74,61 @@ namespace Datos
       }
       catch (Exception ex)
       {
+        System.Diagnostics.Trace.WriteLine("VuelosDAO.TraerDetalle ERROR:" + ex.Message);
         throw ex;
-      }           
+      }
     }
 
     public void InsertarVuelo(string pi_iCiudadO, string pi_iCiudadD, string pi_sFecha, string pi_sHoraS, string pi_sHorraL, int pi_sEstado)
     {
-      using (var conection = GetConnection())
+      try
       {
-        conection.Open();
-        using (var cmd = new SqlCommand("SPinsertarVuelos", conection))
+        using (var conection = GetConnection())
         {
-          cmd.CommandType = CommandType.StoredProcedure;
-          cmd.Parameters.AddWithValue("@piIATAOrigen", pi_iCiudadO);
-          cmd.Parameters.AddWithValue("@piIATADestino", pi_iCiudadD);
-          cmd.Parameters.AddWithValue("@piFecha", pi_sFecha);
-          cmd.Parameters.AddWithValue("@piHoraSalida", pi_sHoraS);
-          cmd.Parameters.AddWithValue("@piHoraLlegada", pi_sHorraL);
-          cmd.Parameters.AddWithValue("@piESOCodigo", pi_sEstado);
-          cmd.ExecuteNonQuery();        
+          conection.Open();
+          using (var cmd = new SqlCommand("SPinsertarVuelos", conection))
+          {
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@piIATAOrigen", pi_iCiudadO);
+            cmd.Parameters.AddWithValue("@piIATADestino", pi_iCiudadD);
+            cmd.Parameters.AddWithValue("@piFecha", pi_sFecha);
+            cmd.Parameters.AddWithValue("@piHoraSalida", pi_sHoraS);
+            cmd.Parameters.AddWithValue("@piHoraLlegada", pi_sHorraL);
+            cmd.Parameters.AddWithValue("@piESOCodigo", pi_sEstado);
+            cmd.ExecuteNonQuery();
+          }
         }
       }
-    }
-    public void ActualizarVuelo( string pi_sFecha, string pi_sHoraS, string pi_sHorraL, int pi_sEstado,double pi_dIdVuelo)
-    {
-      using (var conection = GetConnection())
+      catch (Exception ex)
       {
-        conection.Open();
-        using (var cmd = new SqlCommand("SPActualizarVuelos", conection))
+        System.Diagnostics.Trace.WriteLine("VuelosDAO.InsertarVuelo ERROR:" + ex.Message);
+        throw ex;
+      }
+
+    }
+    public void ActualizarVuelo(string pi_sFecha, string pi_sHoraS, string pi_sHorraL, int pi_sEstado, double pi_dIdVuelo)
+    {
+      try
+      {
+        using (var conection = GetConnection())
         {
-          cmd.CommandType = CommandType.StoredProcedure;          
-          cmd.Parameters.AddWithValue("@piFecha", pi_sFecha);
-          cmd.Parameters.AddWithValue("@piHoraSalida", pi_sHoraS);
-          cmd.Parameters.AddWithValue("@piHoraLlegada", pi_sHorraL);
-          cmd.Parameters.AddWithValue("@piESOCodigo", pi_sEstado);
-          cmd.Parameters.AddWithValue("@IdVuelo", pi_dIdVuelo);
-          cmd.ExecuteNonQuery();
+          conection.Open();
+          using (var cmd = new SqlCommand("SPActualizarVuelos", conection))
+          {
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@piFecha", pi_sFecha);
+            cmd.Parameters.AddWithValue("@piHoraSalida", pi_sHoraS);
+            cmd.Parameters.AddWithValue("@piHoraLlegada", pi_sHorraL);
+            cmd.Parameters.AddWithValue("@piESOCodigo", pi_sEstado);
+            cmd.Parameters.AddWithValue("@IdVuelo", pi_dIdVuelo);
+            cmd.ExecuteNonQuery();
+          }
         }
+      }
+      catch (Exception ex)
+      {
+        System.Diagnostics.Trace.WriteLine("VuelosDAO.ActualizarVuelo ERROR:" + ex.Message);
+        throw ex;
       }
     }
   }

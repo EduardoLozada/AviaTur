@@ -127,7 +127,7 @@ namespace AviatTur
       }
       catch (Exception ex)
       {
-        MessageBox.Show("Error al validar datos " + ex);
+        MessageBox.Show("Se presento un error al intentar validar los datos , Por favor verifique la conexion en el archivo app.config " );
       }
     }
 
