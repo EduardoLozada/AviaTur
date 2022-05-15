@@ -92,7 +92,12 @@ namespace AviatTur
     {
       string vl_sNombre = "";
       string vl_sPerfil = "";
-      string vl_sRutaFoto = "../../Imagenes/" + txtUsuario.Text + ".png";
+      string vl_sRutaFoto = "";
+      string vl_sfullPath = System.Reflection.Assembly.GetAssembly(typeof(Login)).Location;
+      if (vl_sfullPath.Contains("bin"))
+        vl_sRutaFoto = "../../Imagenes/" + txtUsuario.Text + ".png";
+      else
+        vl_sRutaFoto = "Imagenes/" + txtUsuario.Text + ".png";
       try
       {
         if (!txtUsuario.Text.Equals("USUARIO"))
